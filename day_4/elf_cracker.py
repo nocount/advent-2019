@@ -3,7 +3,6 @@
 
 def is_valid_password(password):
 
-    has_dupe = False
     # Check descending
     for i in range(1, 6):
         if int(password[i]) < int(password[i-1]):
@@ -11,14 +10,7 @@ def is_valid_password(password):
 
     # Check dupes
     counts = [password.count(c) for c in set(password)]
-    for c in counts:
-        if c == 2:
-            has_dupe = True
-
-    if has_dupe:
-        return True
-    else:
-        return False
+    return any(c == 2 for c in counts)
 
 
 if __name__ == '__main__':
